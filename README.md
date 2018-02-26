@@ -1,4 +1,4 @@
-# Demo of using CUDA to accelerate parallelizable Python function
+# Demo of using CUDA to accelerate parallelizable Python functions
 
 The following has been cobbled together and streamlined from the following resources:
 
@@ -66,18 +66,6 @@ Verify the installation by running:
 ```nvidia-smi```
 
 which should list the CUDA-enabled GPUs on your machine.
-
-### Install nvcc
-
-Run:
-
-```sudo apt install nvidia-cuda-toolkit```
-
-Verify installation:
-
-```nvcc --version```
-
-which should show version info.
 
 ### Test
 
