@@ -22,6 +22,8 @@ Install:
 
 ```bash Anaconda3-4.0.0-Linux-x86_64.sh```
 
+Note: make sure to enter 'yes' for final prompt asking to Anaconda location to PATH.
+
 Run commands added to .bashrc file to start using right away:
 
 ```source ~/.bashrc```
@@ -72,6 +74,20 @@ which should list the CUDA-enabled GPUs on your machine.
 Clone this repository onto your machine:
 
 ```git clone https://github.com/rkp8000/python_cuda_demo```
+
+To get a benchmark for adding two vectors using the CPU, run 
+
+```python vector_add_cpu.py```
+
+which should take ~10-30 seconds.
+
+To make sure the CUDA drivers and Python interface were installed correctly, and to run the same vector addition function parallelized on a GPU, run
+
+```python vector_add_gpu.py```
+
+If this runs with no errors it means that everything is installed correctly. Further, you should see a dramatic speed up of the time it takes to perform the vector addition, since the element-wise operations have been distributed across the GPU.
+
+### Test inside a Jupyter notebook
 
 Start a Jupyter notebook server:
 
