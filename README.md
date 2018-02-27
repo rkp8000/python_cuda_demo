@@ -8,6 +8,8 @@ The following has been cobbled together and streamlined from the following resou
 
 [NVIDIA developer help forum](https://devtalk.nvidia.com/default/topic/995277/cuda-8-0-toolkit-install-nvcc-not-found-ubuntu-16-04/)
 
+[Nice blog post by Amulya Aankul about running a Jupyter Notebook on Google Cloud Platform](https://towardsdatascience.com/running-jupyter-notebook-in-google-cloud-platform-in-15-min-61e16da34d52)
+
 ## Getting started: running a minimal CUDA program
 
 These instructions assume you're starting from a fresh installation of Ubuntu with CUDA-enabled GPUs, as you might be after spinning up a virtual machine on Google Cloud Platform. Everything that follows uses Python 3.
@@ -75,6 +77,10 @@ Clone this repository onto your machine:
 
 ```git clone https://github.com/rkp8000/python_cuda_demo```
 
+and cd into it:
+
+```cd python_cuda_demo```
+
 To make sure the CUDA drivers and Python interface were installed correctly, and to run the same vector addition function parallelized on a GPU, run
 
 ```python vector_add_gpu.py```
@@ -89,15 +95,46 @@ which should take much longer.
 
 ### Test inside a Jupyter notebook
 
+If hosting on a remote server first do the following (otherwise jump to 'Start notebook server'):
+
+Make config file:
+
+```jupyter notebook --generate-config```
+
+(note: if `jupyter` command is not recognized, make sure you ran `source ~/.bashrc` to add anaconda to your path)
+
+Edit config file:
+
+```vi ~/.jupyter/jupyter_notebook_config.py```
+
+After the commented lines:
+
+```
+#-----------------------------
+# Configurable configuration
+#-----------------------------
+```
+
+add in the new lines:
+
+```
+c = get_config()
+c.NotebookApp.ip = '*'
+c.NotebookApp.open_browser = False
+c.NotebookApp.port = <Port Number>
+```
+
+then save and close.
+
 Start a Jupyter notebook server:
 
-```jupyter notebook --port=9999```
+```jupyter notebook --port=5000```
 
-Navigate to the notebook URL, e.g.: 'localhost:9999`.
+Navigate to the notebook URL, e.g.: 'localhost:5000`.
 
 Run the notebook `demo.ipynb`.
 
-The notebook will run first run a vector-addition function using the machine's CPUs, and then will run it using the GPUs. If the notebook runs successfully and prints out time measurements for each function, then congratulations, you have successfully accelerated your first parallelizable Python function with CUDA!
+If the notebook runs successfully and prints out time measurements for each function, then congratulations, you have successfully accelerated your first parallelizable Python function with CUDA!
 
 For more details on how the Python code works, see the NVIDIA-published video: [Your First CUDA Python Program](https://www.youtube.com/watch?v=dPQnFXD7DxM).
 
