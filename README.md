@@ -81,13 +81,13 @@ and cd into it:
 
 ```cd python_cuda_demo```
 
-To make sure the CUDA drivers and Python interface were installed correctly, and to run the same vector addition function parallelized on a GPU, run
+To make sure the CUDA drivers and Python interface were installed correctly, and run an example parallelized vector addition function:
 
 ```python vector_add_gpu.py```
 
 If this runs with no errors it means that everything is installed correctly.
 
-To get a benchmark for adding two vectors using the CPU, run 
+To get a benchmark for adding two vectors using the CPU instead, run 
 
 ```python vector_add_cpu.py```
 
